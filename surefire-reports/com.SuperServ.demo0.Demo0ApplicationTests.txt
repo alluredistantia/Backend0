@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.SuperServ.demo0.Demo0ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.439 s - in com.SuperServ.demo0.Demo0ApplicationTests
