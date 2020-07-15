@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.SuperServ.demo0.Database.IRinventDataAccess;
-import com.SuperServ.demo0.Models.Carticle;
-import com.SuperServ.demo0.Models.Cinvent;
 import com.SuperServ.demo0.Models.CRinvent;
 
 
