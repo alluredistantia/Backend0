@@ -41,12 +41,13 @@ return BonLivDataAccess.findAll();
         return BonLivDataAccess.getNbr();
     }
     
-    // @GetMapping("/getFour/{id}")
-    //public Optional<Cfour>  getFour(@PathVariable int id) throws ClassNotFoundException, SQLException{
-    //	CBonLiv obonLiv=BonLivDataAccess.findById(id).orElse(null);
-    //	int vidfour=obonLiv.getIdfour();
-    //	return fourDataAccess.findById(vidfour)
-   // }
+     @GetMapping("/getFour/{id}")
+    public Optional<Cfour>  getFour(@PathVariable int id) throws ClassNotFoundException, SQLException{
+    	CBonLiv obonLiv=BonLivDataAccess.findById(id).orElse(null);
+    	int vidfour=obonLiv.getIdfour();
+    	String svidFour=String.valueOf(vidfour);
+    	return fourDataAccess.findById(svidFour);
+    }
     
  //test
 
