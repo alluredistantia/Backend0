@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface IFourDataAccess extends JpaRepository<Cfour,String>{
+public interface IFourDataAccess extends JpaRepository<Cfour,Integer>{
 
     
     @Query (value = "SELECT count(*) FROM tfour u ", nativeQuery = true)
