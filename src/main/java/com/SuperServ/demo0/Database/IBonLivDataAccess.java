@@ -14,7 +14,10 @@ import com.SuperServ.demo0.Models.CBonLiv;
 	@Query (value = "SELECT count(*) FROM tbonliv u ", nativeQuery = true)
 		int getNbr();
 
-   
+	 @Query(
+				value = "SELECT ifnull (max(u.idbonliv),0) FROM tbonliv u ",
+				nativeQuery = true)
+		      int getNewId();
     
 
 }

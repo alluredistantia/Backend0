@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.SuperServ.demo0.Database.IBonLivDataAccess;
 import com.SuperServ.demo0.Database.IFourDataAccess;
 import com.SuperServ.demo0.Models.CBonLiv;
-import com.SuperServ.demo0.Models.Carticle;
-import com.SuperServ.demo0.Models.CbarCode;
 import com.SuperServ.demo0.Models.Cfour;
 
 
@@ -48,6 +46,11 @@ return BonLivDataAccess.findAll();
     	//String svidFour=String.valueOf(vidfour);
     	return fourDataAccess.findById(vidfour);
     }
+     @PostMapping("/delBonLiv")
+     public void delBonLiv(@RequestBody CBonLiv cbonliv){
+
+         this.BonLivDataAccess.delete(cbonliv);
+ }
     
  //test
 
@@ -55,9 +58,13 @@ return BonLivDataAccess.findAll();
     public void setInvent(@RequestBody CBonLiv cbonliv){
     	cbonliv.setDate_(new Date());
         this.BonLivDataAccess.save(cbonliv);
-}    
+     }    
     
-    
+    @GetMapping("/getNewId")
+    public int getNewId() throws SQLException, ClassNotFoundException {
+    	
+        return BonLivDataAccess.getNewId()+1; 
+    }
     
     
     

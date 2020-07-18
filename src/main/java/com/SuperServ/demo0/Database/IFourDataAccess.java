@@ -22,7 +22,10 @@ public interface IFourDataAccess extends JpaRepository<Cfour,Integer>{
 			value = "SELECT * FROM tfour u WHERE u.desfour like %?1% ", 
 			nativeQuery = true)
 	      List<Cfour> getfourLike(String str);	
-   
+    
+    @Query (value = "SELECT max(idfour) FROM tfour u ", nativeQuery = true)
+	int getMaxId();
+    
 }    
 
 
