@@ -32,5 +32,9 @@ import com.SuperServ.demo0.Models.CRbonLiv;
 				value = "SELECT ifnull (max(u.idrbonliv),0) FROM rbonliv u ",
 				nativeQuery = true)
 		      int getNewId();
+	 @Query(
+				value = "delete  FROM rbonliv u where u.idbonliv=?1 ",
+				nativeQuery = true)
+		        void deleteByBonLiv(int vidbonliv);
 
 }

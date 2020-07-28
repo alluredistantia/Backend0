@@ -2,6 +2,7 @@ package com.SuperServ.demo0.Controllers;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.SuperServ.demo0.Database.IBarCodeDataAccess;
 import com.SuperServ.demo0.Database.IRBonLivDataAccess;
-
 import com.SuperServ.demo0.Models.CRbonLiv;
+import com.SuperServ.demo0.Models.CbarCode;
+
 
 
 
@@ -23,7 +25,9 @@ import com.SuperServ.demo0.Models.CRbonLiv;
 public class RRBonLiv {
     @Autowired
     private IRBonLivDataAccess RbonLivDataAccess;
- 
+    @Autowired
+    private IBarCodeDataAccess barcodeDataAccess;	
+
 
     @GetMapping("getRBonLivs")
    public List<CRbonLiv> getRBonLivs() throws SQLException, ClassNotFoundException {    	
@@ -36,7 +40,16 @@ public class RRBonLiv {
         return RbonLivDataAccess.getNbr();
     }
     
-  
+    @PostMapping("/delRBonLiv")
+    public void delRBonLiv(@RequestBody CRbonLiv crbonliv){
+
+        this.RbonLivDataAccess.delete(crbonliv);
+     }
+    @PostMapping("/delRBonLivbyBonLiv/{vidbonliv}")
+    public void delRBonLivbyBonLiv(@PathVariable int vidbonliv){
+
+        this.RbonLivDataAccess.deleteByBonLiv(vidbonliv);
+     }
     
     @GetMapping("/getRBonLivsByBarCode/{barcode}")
     public List<CRbonLiv> getRBonLivsByBarCode(@PathVariable int barcode){
@@ -69,7 +82,12 @@ public class RRBonLiv {
     
     
     
-    
+    @GetMapping("/getBarCode/{id}")
+    public Optional<CbarCode>  getBarCode(@PathVariable Integer id) throws ClassNotFoundException, SQLException{
+    	CRbonLiv orbonliv=RbonLivDataAccess.findById(id).orElse(null);
+    	String vidbarcode=orbonliv.getIdbarcode();
+    	return barcodeDataAccess.findById(vidbarcode);  
+    }
     
     
     

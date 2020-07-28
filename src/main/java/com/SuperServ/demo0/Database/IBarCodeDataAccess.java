@@ -14,7 +14,7 @@ public interface IBarCodeDataAccess extends JpaRepository<CbarCode,String>{
 	
     @Query (value = "SELECT count(*) FROM tbarcode u ", nativeQuery = true)
 	int getNbr();
-    
+
 }
 
 

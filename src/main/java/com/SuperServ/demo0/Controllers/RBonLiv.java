@@ -43,7 +43,6 @@ return BonLivDataAccess.findAll();
     public Optional<Cfour>  getFour(@PathVariable int id) throws ClassNotFoundException, SQLException{
     	CBonLiv obonLiv=BonLivDataAccess.findById(id).orElse(null);
     	int vidfour=obonLiv.getIdfour();
-    	//String svidFour=String.valueOf(vidfour);
     	return fourDataAccess.findById(vidfour);
     }
      @PostMapping("/delBonLiv")
